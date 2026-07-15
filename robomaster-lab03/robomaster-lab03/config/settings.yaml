@@ -1,0 +1,35 @@
+# config/settings.yaml
+# ต้องการ pip install pyyaml
+
+# 1. Network & Connection settings
+connection:
+  mode: "ap"                   # "ap" (Wi-Fi direct) หรือ "rndis" (USB Mode)
+  robot_ip: "192.168.2.1"      # Default IP สำหรับ AP mode ของ RoboMaster
+  timeout: 10                  # วินาที
+
+# 2. Robot Physical Parameters
+robot_params:
+  chassis:
+    default_speed_x: 0.5       # ความเร็วเดินหน้า-ถอยหลังเริ่มต้น (m/s)
+    default_speed_y: 0.5       # ความเร็วสไลด์ซ้าย-ขวาเริ่มต้น (m/s)
+    default_speed_z: 45        # ความเร็วหมุน (deg/s)
+    max_speed_x: 1.5           # ขีดจำกัดความเร็วสูงสุดเพื่อความปลอดภัย
+  gimbal:
+    default_pitch_speed: 50    # ความเร็วในการก้ม-เงย (deg/s)
+    default_yaw_speed: 100     # ความเร็วในการหมุนซ้าย-ขวา (deg/s)
+    max_pitch_angle: 30        # จำกัดองศาเงยสูงสุด
+    min_pitch_angle: -20       # จำกัดองศาก้มต่ำสุด
+
+# 3. Directories & Paths
+paths:
+  raw_data_dir: "data/raw"             # ที่เก็บไฟล์ CSV ข้อมูลเซนเซอร์ดิบ
+  processed_data_dir: "data/processed" # ที่เก็บไฟล์ที่คลีนแล้ว หรือโมเดล
+  output_plots_dir: "analysis/plots"   # โฟลเดอร์เก็บรูปภาพกราฟผลการรันที่วิเคราะห์เสร็จ
+
+# 4. Lab Assignment 1 - Square Path Parameters
+lab1_square_path:
+  tile_size_m: 0.6           # ระยะห่างระหว่างจุดกึ่งกลาง tile (เมตร) แก้ตามขนาดสนามจริง
+  turn_angle_deg: 90         # มุมเลี้ยวที่มุมแต่ละ tile
+  turn_direction: "cw"       # "cw" = เลี้ยวขวา, "ccw" = เลี้ยวซ้าย
+  stop_time_s: 1             # หยุดนิ่ง 1 วินาทีทุก tile
+  log_freq_hz: 10            # ความถี่ในการ subscribe sensor data (ครั้ง/วินาที)
